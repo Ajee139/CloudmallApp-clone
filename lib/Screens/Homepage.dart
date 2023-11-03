@@ -3,7 +3,9 @@ import "package:cloudmallapp/Screens/Login.dart";
 import "package:cloudmallapp/Screens/dealspage.dart";
 import "package:cloudmallapp/Screens/details.dart";
 import "package:cloudmallapp/Screens/home.dart";
+import "package:cloudmallapp/Screens/orders.dart";
 import "package:cloudmallapp/Screens/stores.dart";
+import "package:cloudmallapp/cart.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -17,11 +19,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   int myCurrentIndex = 0;
-  List pages = const [
-    home(),
-    store(),
-    Deals(),
-  ];
+  List pages = const [home(), store(), Deals(), Cart(), Order()];
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
