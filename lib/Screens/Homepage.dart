@@ -260,6 +260,7 @@ class _HomepageState extends State<Homepage> {
                       TextButton(
                           onPressed: () {
                             Get.replace(Loginpage());
+                            Get.to(Loginpage());
                           },
                           child: Text("Log out",
                               style: TextStyle(

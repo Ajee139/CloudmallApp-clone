@@ -1,10 +1,22 @@
 import 'package:cloudmallapp/Screens/Login.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:validatorless/validatorless.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'dart:developer';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
-
+  SignUpPage({super.key});
+  TextEditingController userFirstNameController = TextEditingController();
+  TextEditingController userLastNameController = TextEditingController();
+  TextEditingController userPhoneController = TextEditingController();
+  TextEditingController userEmailController = TextEditingController();
+  TextEditingController userPasswordController = TextEditingController();
+  User? currentUser = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +50,10 @@ class SignUpPage extends StatelessWidget {
                       padding: const EdgeInsets.all(15.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: userFirstNameController,
+                          validator: Validatorless.regex(
+                              RegExp(r'^[a-zA-Z]+$'), "Invalid input"),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
@@ -72,7 +87,10 @@ class SignUpPage extends StatelessWidget {
                       padding: const EdgeInsets.all(15.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: userLastNameController,
+                          validator: Validatorless.regex(
+                              RegExp(r'^[a-zA-Z]+$'), "Invalid input"),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
@@ -107,6 +125,9 @@ class SignUpPage extends StatelessWidget {
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: TextFormField(
+                          controller: userPhoneController,
+                          validator:
+                              Validatorless.number("Value is not a number"),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
@@ -140,7 +161,12 @@ class SignUpPage extends StatelessWidget {
                       padding: const EdgeInsets.all(15.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: userEmailController,
+                          validator: Validatorless.multiple([
+                            Validatorless.email("Please enter a valid email!"),
+                            Validatorless.required("This is a required field!")
+                          ]),
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
@@ -174,7 +200,8 @@ class SignUpPage extends StatelessWidget {
                       padding: const EdgeInsets.all(15.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: userPasswordController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
@@ -200,7 +227,33 @@ class SignUpPage extends StatelessWidget {
                     style: ButtonStyle(
                         backgroundColor: MaterialStateColor.resolveWith(
                             (states) => Color.fromARGB(255, 5, 5, 184))),
-                    onPressed: () {},
+                    onPressed: () {
+                      var userFirstName = userFirstNameController.text.trim();
+                      var userSecondName = userFirstNameController.text.trim();
+                      var userEmail = userEmailController.text.trim();
+                      var userPhone = userPhoneController.text.trim();
+                      var userPassword = userPasswordController.text.trim();
+
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: userEmail, password: userPassword)
+                          .then((value) => {
+                                log("User created"),
+                                FirebaseFirestore.instance
+                                    .collection("users")
+                                    .doc(currentUser!.uid)
+                                    .set({
+                                  "userName": userFirstName + userSecondName,
+                                  "userEmail": userEmail,
+                                  "userPhone": userPhone,
+                                  "userPassword": userPassword,
+                                  "Created at": DateTime.now(),
+                                  "Userid": currentUser!.uid
+                                }),
+                                log("Data Added!")
+                              });
+                      Get.to(Loginpage());
+                    },
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
@@ -223,13 +276,6 @@ class SignUpPage extends StatelessWidget {
                       fontSize: 15,
                       fontWeight: FontWeight.w700),
                 )),
-            TextFormField(
-              decoration: InputDecoration(hintText: "Validator Wahala"),
-              validator: Validatorless.multiple([
-                Validatorless.email("This must be an email"),
-                Validatorless.required("This is a required field")
-              ]),
-            )
           ],
         ),
       ),

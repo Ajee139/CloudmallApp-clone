@@ -1,13 +1,48 @@
+import 'dart:js';
+
 import 'package:cloudmallapp/Screens/About.dart';
 import 'package:cloudmallapp/Screens/FIrstPage.dart';
 import 'package:cloudmallapp/Screens/ResetPage.dart';
 import 'package:cloudmallapp/Screens/SignUp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import "package:cloudmallapp/Screens/Homepage.dart";
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Loginpage extends StatelessWidget {
-  const Loginpage({super.key});
+  Loginpage({super.key});
+  String email = "";
+  String password = "";
+  allowUsertoLogin() async {
+    final snackBar = SnackBar(
+        duration: Duration(seconds: 5),
+        content: Text(
+          "Authenticating... Please wait",
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.redAccent),
+        ));
+    ScaffoldMessenger.of(context as BuildContext).showSnackBar(snackBar);
+    User? currentUser;
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((fAuth) {
+      currentUser = fAuth.user;
+    }).catchError((onerror) {
+      SnackBar snackBar = SnackBar(
+          duration: Duration(seconds: 5),
+          content: Text(
+            "Error occured ${onerror.toString()}",
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.redAccent),
+          ));
+      ScaffoldMessenger.of(context as BuildContext).showSnackBar(snackBar);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +103,7 @@ class Loginpage extends StatelessWidget {
                       padding:
                           const EdgeInsets.only(top: 10, left: 10, right: 10),
                       child: Center(
-                        child: TextField(
+                        child: TextFormField(
                           decoration: InputDecoration(
                               hintText: "Your.email@example.com",
                               border: OutlineInputBorder(
@@ -94,7 +129,7 @@ class Loginpage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 15, bottom: 20, left: 10, right: 10),
-                            child: TextField(
+                            child: TextFormField(
                               decoration: InputDecoration(
                                   icon: Icon(Icons.remove_red_eye_rounded),
                                   hintText: "*********",
@@ -137,6 +172,8 @@ class Loginpage extends StatelessWidget {
                   backgroundColor:
                       MaterialStatePropertyAll(Color.fromARGB(237, 4, 4, 116))),
               onPressed: () {
+                allowUsertoLogin();
+
                 Get.to(Homepage());
               },
               child: Text(
