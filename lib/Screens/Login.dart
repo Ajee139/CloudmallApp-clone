@@ -1,21 +1,18 @@
 import 'dart:js';
 
-import 'package:cloudmallapp/Screens/About.dart';
-import 'package:cloudmallapp/Screens/FIrstPage.dart';
 import 'package:cloudmallapp/Screens/ResetPage.dart';
 import 'package:cloudmallapp/Screens/SignUp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import "package:cloudmallapp/Screens/Homepage.dart";
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Loginpage extends StatelessWidget {
   Loginpage({super.key});
   String email = "";
   String password = "";
   allowUsertoLogin() async {
-    final snackBar = SnackBar(
+    const snackBar = SnackBar(
         duration: Duration(seconds: 5),
         content: Text(
           "Authenticating... Please wait",
@@ -32,10 +29,10 @@ class Loginpage extends StatelessWidget {
       currentUser = fAuth.user;
     }).catchError((onerror) {
       SnackBar snackBar = SnackBar(
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
           content: Text(
             "Error occured ${onerror.toString()}",
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.redAccent),
@@ -48,7 +45,7 @@ class Loginpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Text(
             "Login",
             style: TextStyle(
@@ -60,15 +57,15 @@ class Loginpage extends StatelessWidget {
       ),
       body: Container(
         child: Column(children: [
-          SizedBox(height: 30),
-          Container(
+          const SizedBox(height: 30),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width * 0.9,
             child: ElevatedButton(
               onPressed: () {},
-              style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.white)),
-              child: Row(
+              style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.white)),
+              child: const Row(
                 children: [
                   Icon(Icons.adb_sharp),
                   SizedBox(width: 20),
@@ -81,16 +78,16 @@ class Loginpage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
-          Text("Or", style: TextStyle(color: Colors.black87, fontSize: 16)),
+          const SizedBox(height: 20),
+          const Text("Or", style: TextStyle(color: Colors.black87, fontSize: 16)),
           Padding(
             padding: const EdgeInsets.only(top: 15),
             child: Container(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0, left: 15),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10.0, left: 15),
                       child: Text(
                         "Email/Phone Number",
                         style: TextStyle(
@@ -104,7 +101,7 @@ class Loginpage extends StatelessWidget {
                           const EdgeInsets.only(top: 10, left: 10, right: 10),
                       child: Center(
                         child: TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               hintText: "Your.email@example.com",
                               border: OutlineInputBorder(
                                   borderSide:
@@ -116,8 +113,8 @@ class Loginpage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 15.0, left: 15),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 15.0, left: 15),
                             child: Text(
                               "Password",
                               style: TextStyle(
@@ -130,7 +127,7 @@ class Loginpage extends StatelessWidget {
                             padding: const EdgeInsets.only(
                                 top: 15, bottom: 20, left: 10, right: 10),
                             child: TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   icon: Icon(Icons.remove_red_eye_rounded),
                                   hintText: "*********",
                                   border: OutlineInputBorder(
@@ -151,9 +148,9 @@ class Loginpage extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    Get.to(ResetPage());
+                    Get.to(const ResetPage());
                   },
-                  child: Text(
+                  child: const Text(
                     "Forgot Password",
                     style: TextStyle(
                         color: Colors.blueAccent,
@@ -164,19 +161,19 @@ class Loginpage extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             height: 50,
             child: ElevatedButton(
-              style: ButtonStyle(
+              style: const ButtonStyle(
                   backgroundColor:
-                      MaterialStatePropertyAll(Color.fromARGB(237, 4, 4, 116))),
+                      WidgetStatePropertyAll(Color.fromARGB(237, 4, 4, 116))),
               onPressed: () {
                 allowUsertoLogin();
 
-                Get.to(Homepage());
+                Get.to(const Homepage());
               },
-              child: Text(
+              child: const Text(
                 "Login",
                 style: TextStyle(
                     color: Colors.white70,
@@ -191,7 +188,7 @@ class Loginpage extends StatelessWidget {
                 onPressed: () {
                   Get.to(SignUpPage());
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(

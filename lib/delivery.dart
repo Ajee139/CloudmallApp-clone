@@ -8,8 +8,8 @@ class DeliveryDet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 30.0),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 30.0),
           child: Text(
             "Delivery Details",
             style: TextStyle(
@@ -20,7 +20,7 @@ class DeliveryDet extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -32,15 +32,15 @@ class DeliveryDet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Delivery Details",
                         style: TextStyle(fontSize: 16),
                       ),
-                      Container(
+                      SizedBox(
                           width: MediaQuery.of(context).size.width * 0.87,
                           child: TextFormField(
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
                           ))
                     ],
                   ),
@@ -53,15 +53,15 @@ class DeliveryDet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Address Description",
                         style: TextStyle(fontSize: 16),
                       ),
-                      Container(
+                      SizedBox(
                           width: MediaQuery.of(context).size.width * 0.87,
                           child: TextFormField(
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
                           ))
                     ],
                   ),
@@ -74,15 +74,15 @@ class DeliveryDet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Delivery Time",
                         style: TextStyle(fontSize: 16),
                       ),
-                      Container(
+                      SizedBox(
                           width: MediaQuery.of(context).size.width * 0.87,
                           child: TextFormField(
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
                           ))
                     ],
                   ),
@@ -95,17 +95,17 @@ class DeliveryDet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Phone Number",
                         style: TextStyle(fontSize: 16),
                       ),
-                      Container(
+                      SizedBox(
                           width: MediaQuery.of(context).size.width * 0.87,
                           child: TextFormField(
                             validator:
                                 Validatorless.number("Value is not a number"),
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
                           ))
                     ],
                   ),
@@ -116,7 +116,7 @@ class DeliveryDet extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Text("Order Note"),
                         SizedBox(width: 5),
@@ -125,18 +125,18 @@ class DeliveryDet extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.today_outlined),
-                      style: ButtonStyle(
-                          iconColor: MaterialStatePropertyAll(Colors.blue)),
+                      icon: const Icon(Icons.today_outlined),
+                      style: const ButtonStyle(
+                          iconColor: WidgetStatePropertyAll(Colors.blue)),
                     )
                   ],
                 ),
               ),
               Container(
-                child: Column(
+                child: const Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -158,7 +158,7 @@ class DeliveryDet extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           left: 15.0, right: 15.0, bottom: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,7 +181,7 @@ class DeliveryDet extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           left: 15.0, right: 15.0, bottom: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,7 +204,7 @@ class DeliveryDet extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           left: 15.0, right: 15.0, bottom: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -229,20 +229,20 @@ class DeliveryDet extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Text(
+                  style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+                  child: const Text(
                     "Complete Payment",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 25),
                   ),
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.blue)),
                 ),
               )
             ],

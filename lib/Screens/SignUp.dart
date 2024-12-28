@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'dart:developer';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:io';
+
 
 class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
@@ -21,14 +19,14 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Text(
             "SignUp With Email",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ),
       ),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
@@ -39,7 +37,7 @@ class SignUpPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       " First Name",
                       style: TextStyle(
                           fontSize: 16,
@@ -48,19 +46,19 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: TextFormField(
                           controller: userFirstNameController,
                           validator: Validatorless.regex(
                               RegExp(r'^[a-zA-Z]+$'), "Invalid input"),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(style: BorderStyle.solid)),
                             hintText: "Your First Name",
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
@@ -76,7 +74,7 @@ class SignUpPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       " Last Name",
                       style: TextStyle(
                           fontSize: 16,
@@ -85,19 +83,19 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: TextFormField(
                           controller: userLastNameController,
                           validator: Validatorless.regex(
                               RegExp(r'^[a-zA-Z]+$'), "Invalid input"),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(style: BorderStyle.solid)),
                             hintText: "Your Last Name",
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
@@ -113,7 +111,7 @@ class SignUpPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       " Phone Number",
                       style: TextStyle(
                           fontSize: 16,
@@ -122,19 +120,19 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: TextFormField(
                           controller: userPhoneController,
                           validator:
                               Validatorless.number("Value is not a number"),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(style: BorderStyle.solid)),
                             hintText: "Phone Number",
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
@@ -150,7 +148,7 @@ class SignUpPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       " Email",
                       style: TextStyle(
                           fontSize: 16,
@@ -159,7 +157,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: TextFormField(
                           controller: userEmailController,
@@ -167,13 +165,13 @@ class SignUpPage extends StatelessWidget {
                             Validatorless.email("Please enter a valid email!"),
                             Validatorless.required("This is a required field!")
                           ]),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(style: BorderStyle.solid)),
                             hintText: "Your Email",
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
@@ -189,7 +187,7 @@ class SignUpPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       " Password",
                       style: TextStyle(
                           fontSize: 16,
@@ -198,17 +196,17 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: TextFormField(
                           controller: userPasswordController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(style: BorderStyle.solid)),
                             hintText: "Password",
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
@@ -220,13 +218,13 @@ class SignUpPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateColor.resolveWith(
-                            (states) => Color.fromARGB(255, 5, 5, 184))),
+                        backgroundColor: WidgetStateColor.resolveWith(
+                            (states) => const Color.fromARGB(255, 5, 5, 184))),
                     onPressed: () {
                       var userFirstName = userFirstNameController.text.trim();
                       var userSecondName = userFirstNameController.text.trim();
@@ -254,7 +252,7 @@ class SignUpPage extends StatelessWidget {
                               });
                       Get.to(Loginpage());
                     },
-                    child: Text(
+                    child: const Text(
                       "Sign Up",
                       style: TextStyle(
                           color: Colors.white,
@@ -269,7 +267,7 @@ class SignUpPage extends StatelessWidget {
                     return Loginpage();
                   }));
                 },
-                child: Text(
+                child: const Text(
                   "Already have an account?       Login",
                   style: TextStyle(
                       color: Colors.black87,

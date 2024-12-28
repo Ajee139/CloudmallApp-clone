@@ -6,10 +6,10 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Contact Us & Help")),
+      appBar: AppBar(title: const Text("Contact Us & Help")),
       body: Container(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Text("Help",
+          const Text("Help",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
@@ -18,16 +18,16 @@ class AboutPage extends StatelessWidget {
             child: Container(
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.white)),
+                                WidgetStatePropertyAll(Colors.white)),
                         onPressed: () {},
-                        child: Padding(
+                        child: const Padding(
                           padding:
-                              const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                              EdgeInsets.only(top: 15.0, bottom: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -44,16 +44,16 @@ class AboutPage extends StatelessWidget {
                           ),
                         )),
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.white)),
+                                WidgetStatePropertyAll(Colors.white)),
                         onPressed: () {},
-                        child: Padding(
+                        child: const Padding(
                           padding:
-                              const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                              EdgeInsets.only(top: 15.0, bottom: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -70,16 +70,16 @@ class AboutPage extends StatelessWidget {
                           ),
                         )),
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.white)),
+                                WidgetStatePropertyAll(Colors.white)),
                         onPressed: () {},
-                        child: Padding(
+                        child: const Padding(
                           padding:
-                              const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                              EdgeInsets.only(top: 15.0, bottom: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -96,16 +96,16 @@ class AboutPage extends StatelessWidget {
                           ),
                         )),
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.white)),
+                                WidgetStatePropertyAll(Colors.white)),
                         onPressed: () {},
-                        child: Padding(
+                        child: const Padding(
                           padding:
-                              const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                              EdgeInsets.only(top: 15.0, bottom: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -126,11 +126,11 @@ class AboutPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Container(
               child: Column(
             children: [
-              Text("Contact Us",
+              const Text("Contact Us",
                   style: TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
@@ -140,10 +140,10 @@ class AboutPage extends StatelessWidget {
                     const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0),
                 child: Row(
                   children: [
-                    Icon(Icons.phone),
+                    const Icon(Icons.phone),
                     TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "+2349065440091",
                           style: TextStyle(color: Colors.black87, fontSize: 15),
                         ))
@@ -154,10 +154,10 @@ class AboutPage extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 15.0, left: 15.0),
                 child: Row(
                   children: [
-                    Icon(Icons.email_sharp),
+                    const Icon(Icons.email_sharp),
                     TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "support@cloudmall.africa",
                           style: TextStyle(color: Colors.black87, fontSize: 15),
                         )),
@@ -170,10 +170,10 @@ class AboutPage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 15.0, left: 15.0),
             child: Row(
               children: [
-                Icon(Icons.camera_front),
+                const Icon(Icons.camera_front),
                 TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "cloudmallng",
                       style: TextStyle(color: Colors.black87, fontSize: 15),
                     ))
@@ -184,10 +184,10 @@ class AboutPage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 15.0, left: 15.0),
             child: Row(
               children: [
-                Icon(Icons.baby_changing_station_rounded),
+                const Icon(Icons.baby_changing_station_rounded),
                 TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "cloudmallng",
                       style: TextStyle(color: Colors.black87, fontSize: 15),
                     ))
@@ -198,10 +198,10 @@ class AboutPage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 15.0, left: 15.0),
             child: Row(
               children: [
-                Icon(Icons.facebook_sharp),
+                const Icon(Icons.facebook_sharp),
                 TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "cloudmallng",
                       style: TextStyle(color: Colors.black87, fontSize: 15),
                     ))
@@ -212,10 +212,10 @@ class AboutPage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 15.0, left: 15.0),
             child: Row(
               children: [
-                Icon(Icons.link),
+                const Icon(Icons.link),
                 TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "cloudmallng",
                       style: TextStyle(color: Colors.black87, fontSize: 15),
                     ))

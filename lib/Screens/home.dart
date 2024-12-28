@@ -1,310 +1,211 @@
 import 'package:flutter/material.dart';
-import "package:carousel_slider/carousel_slider.dart";
-import 'package:flutter/rendering.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import "package:cloudmallapp/Models/productData.dart";
 
-class home extends StatelessWidget {
-  const home({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 20.0, right: 20.0, top: 10, bottom: 10),
-              child: CarouselSlider(
-                  items: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "images/burger-with-cheese-e1616580735881%20cloud%20mall%20image%203.jpg"),
-                              fit: BoxFit.fitWidth)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "images/fresh%20pepper%20cloud%20mall%20image%207.jpg"),
-                              fit: BoxFit.fill)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "images/Fruits%20store%20cloud%20mall%20image%205.jpg"),
-                              fit: BoxFit.fill)),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "images/grocery-items%20cloud%20mall%20image%2011.jpg"),
-                              fit: BoxFit.fill)),
-                    ),
-                  ],
-                  options: CarouselOptions(
-                      initialPage: 0,
-                      height: 150,
-                      viewportFraction: 1.0,
-                      enlargeCenterPage: true,
-                      autoPlay: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 800))),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.75,
-                    child: SearchBar(
-                      leading: Icon(Icons.search_rounded),
-                      hintText: "Search for products",
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Icon(Icons.view_column_rounded)
-                ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Carousel Section
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            child: CarouselSlider(
+              items: [
+                _buildCarouselItem(
+                    "images/burger-with-cheese-e1616580735881%20cloud%20mall%20image%203.jpg"),
+                _buildCarouselItem(
+                    "images/fresh%20pepper%20cloud%20mall%20image%207.jpg"),
+                _buildCarouselItem(
+                    "images/Fruits%20store%20cloud%20mall%20image%205.jpg"),
+                _buildCarouselItem(
+                    "images/grocery-items%20cloud%20mall%20image%2011.jpg"),
+                _buildCarouselItem("images/Cn1.jpeg"),
+              ],
+              options: CarouselOptions(
+                height: MediaQuery.of(context).size.height *
+                    0.25, // Responsive height
+                viewportFraction: 1.0,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 200,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            child: Row(
-                              children: [
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 150,
-                                        height: 100,
-                                        child: Image.asset(
-                                            "images/burger-with-cheese-e1616580735881%20cloud%20mall%20image%203.jpg",
-                                            fit: BoxFit.cover),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Coke 50cl pack"),
-                                          Text("#2500.0")
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Prize ..."),
-                                          Text("Open")
-                                        ],
-                                      ),
-                                      ElevatedButton(
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStatePropertyAll(
-                                                      Colors.blue)),
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Add to cart',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15),
-                                          ))
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        }),
+          ),
+
+          // Search Bar Section
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SearchBar(
+                    leading: Icon(Icons.search_rounded),
+                    hintText: "Search for products",
                   ),
-                  Container(
-                    height: 200,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            child: Row(
-                              children: [
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 150,
-                                        height: 100,
-                                        child: Image.asset(
-                                            "images/burger-with-cheese-e1616580735881%20cloud%20mall%20image%203.jpg",
-                                            fit: BoxFit.cover),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Coke 50cl pack"),
-                                          Text("#2500.0")
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Prize ..."),
-                                          Text("Open")
-                                        ],
-                                      ),
-                                      ElevatedButton(
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStatePropertyAll(
-                                                      Colors.blue)),
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Add to cart',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15),
-                                          ))
-                                    ],
-                                  ),
-                                )
-                              ],
+                ),
+                SizedBox(width: 10),
+                Icon(Icons.view_column_rounded, size: 28),
+              ],
+            ),
+          ),
+
+          SizedBox(height: 20),
+
+          // Product Grid Section
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: GridView.builder(
+                itemCount: products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // Number of columns in a row
+                  crossAxisSpacing: 8.0, // Space between columns
+                  mainAxisSpacing: 8.0, // Space between rows
+                  // childAspectRatio: 3 / 4, // Aspect ratio of each card
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  final product = products[index];
+                  return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(10)),
+                            image: DecorationImage(
+                              image: AssetImage(product.imagePath),
+                              fit: BoxFit.fill,
                             ),
-                          );
-                        }),
-                  ),
-                  Container(
-                    height: 200,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            child: Row(
-                              children: [
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 150,
-                                        height: 100,
-                                        child: Image.asset(
-                                            "images/burger-with-cheese-e1616580735881%20cloud%20mall%20image%203.jpg",
-                                            fit: BoxFit.cover),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Coke 50cl pack"),
-                                          Text("#2500.0")
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Prize ..."),
-                                          Text("Open")
-                                        ],
-                                      ),
-                                      ElevatedButton(
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStatePropertyAll(
-                                                      Colors.blue)),
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Add to cart',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15),
-                                          ))
-                                    ],
-                                  ),
-                                )
-                              ],
+                          ),
+                          child: Stack(children: [
+                            Positioned(
+                              top: 30,
+                              left: 0,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  overflow: TextOverflow.clip,
+                                  textAlign: TextAlign.center,
+                                  product.name,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 15),
+                                ),
+                              ),
                             ),
-                          );
-                        }),
-                  ),
-                  Container(
-                    height: 200,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            child: Row(
-                              children: [
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 150,
-                                        height: 100,
-                                        child: Image.asset(
-                                            "images/burger-with-cheese-e1616580735881%20cloud%20mall%20image%203.jpg",
-                                            fit: BoxFit.cover),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Coke 50cl pack"),
-                                          Text("#2500.0")
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text("Prize ..."),
-                                          Text("Open")
-                                        ],
-                                      ),
-                                      ElevatedButton(
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStatePropertyAll(
-                                                      Colors.blue)),
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Add to cart',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15),
-                                          ))
-                                    ],
-                                  ),
-                                )
-                              ],
+                            Positioned(
+                              top: 50,
+                              left: 0,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "#${product.price.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 15),
+                                ),
+                              ),
                             ),
-                          );
-                        }),
-                  ),
-                ],
+                            Positioned(
+                                bottom: 10,
+                                left: 30,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor: WidgetStatePropertyAll(
+                                          Colors.transparent),
+                                      foregroundColor:
+                                          WidgetStatePropertyAll(Colors.black)),
+                                  child: Text(
+                                    "Add to cart",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                ))
+                          ]))
+
+// Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         Container(
+
+//                           height: MediaQuery.of(context).size.height *
+//                               0.2, // Dynamic height
+//                           decoration: BoxDecoration(
+//                             borderRadius:
+//                                 BorderRadius.vertical(top: Radius.circular(10)),
+//                             image: DecorationImage(
+//                               image: AssetImage(product.imagePath),
+//                               fit: BoxFit.cover,
+//                             ),
+//                           ),
+//                         ),
+//                         Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Column(
+//                             crossAxisAlignment: CrossAxisAlignment.start,
+//                             children: [
+//                               Text(
+//                                 product.name,
+//                                 style: TextStyle(fontWeight: FontWeight.bold),
+//                               ),
+//                               SizedBox(height: 4),
+//                               Text("#${product.price.toStringAsFixed(2)}"),
+//                               SizedBox(height: 8),
+//                               ElevatedButton(
+//                                 style: ButtonStyle(
+//                                   backgroundColor:
+//                                       MaterialStateProperty.all(Colors.blue),
+//                                 ),
+//                                 onPressed: () {
+//                                   // Action for adding to cart
+//                                 },
+//                                 child: Text(
+//                                   'Add to cart',
+//                                   style: TextStyle(
+//                                     color: Colors.white,
+//                                     fontWeight: FontWeight.bold,
+//                                     fontSize: 15,
+//                                   ),
+//                                 ),
+//                               ),
+//                             ],
+//                           ),
+
+                      );
+                },
               ),
-            )
-          ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Helper method to build carousel items
+  Widget _buildCarouselItem(String imagePath) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
         ),
       ),
-    ));
+    );
   }
 }

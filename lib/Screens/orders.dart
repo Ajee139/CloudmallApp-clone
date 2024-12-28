@@ -17,8 +17,8 @@ class _OrderState extends State<Order> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/shopper-in-phone.png"),
-              SizedBox(height: 40),
-              Text(
+              const SizedBox(height: 40),
+              const Text(
                 "You have no Orders",
                 style: TextStyle(
                     color: Colors.black87,

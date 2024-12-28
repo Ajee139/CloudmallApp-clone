@@ -7,7 +7,7 @@ class Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Details")),
+        title: const Center(child: Text("Details")),
       ),
     );
   }

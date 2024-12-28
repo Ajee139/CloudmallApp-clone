@@ -8,7 +8,7 @@ class Deals extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Container(
+        title: SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

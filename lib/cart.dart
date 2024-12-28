@@ -12,15 +12,16 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   int itemNo = 1;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                     scrollDirection: Axis.vertical,
@@ -30,7 +31,7 @@ class _CartState extends State<Cart> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 80,
                               height: 150,
                               child: Image.asset(
@@ -38,7 +39,7 @@ class _CartState extends State<Cart> {
                             ),
                             Column(
                               children: [
-                                Row(
+                                const Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -59,20 +60,20 @@ class _CartState extends State<Cart> {
                                   children: [
                                     IconButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.location_on_outlined)),
+                                        icon: const Icon(Icons.location_on_outlined)),
                                     TextButton(
                                         onPressed: () {},
-                                        child: Text("Orente Grills"))
+                                        child: const Text("Orente Grills"))
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     IconButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.delete_outline)),
+                                        icon: const Icon(Icons.delete_outline)),
                                     IconButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.today_outlined)),
+                                        icon: const Icon(Icons.today_outlined)),
                                     Container(
                                       child: Row(
                                         children: [
@@ -84,7 +85,7 @@ class _CartState extends State<Cart> {
                                                   }
                                                 });
                                               },
-                                              child: Text(
+                                              child: const Text(
                                                 "-",
                                                 style: TextStyle(
                                                     color: Colors.black54,
@@ -94,8 +95,8 @@ class _CartState extends State<Cart> {
                                           TextButton(
                                               onPressed: () {},
                                               child: Text(
-                                                "${itemNo}",
-                                                style: TextStyle(
+                                                "$itemNo",
+                                                style: const TextStyle(
                                                     color: Colors.black87,
                                                     fontSize: 20,
                                                     fontWeight:
@@ -107,7 +108,7 @@ class _CartState extends State<Cart> {
                                                   itemNo += 1;
                                                 });
                                               },
-                                              child: Text(
+                                              child: const Text(
                                                 "+",
                                                 style: TextStyle(
                                                     color: Colors.black54,
@@ -127,7 +128,7 @@ class _CartState extends State<Cart> {
                     }),
               ),
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
@@ -147,15 +148,15 @@ class _CartState extends State<Cart> {
                 )
               ],
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.85,
               child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+                  style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.blue)),
                   onPressed: () {
-                    Get.to(DeliveryDet());
+                    Get.to(const DeliveryDet());
                   },
-                  child: Text(
+                  child: const Text(
                     "Checkout",
                     style: TextStyle(
                         color: Colors.white,

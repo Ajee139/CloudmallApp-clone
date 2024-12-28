@@ -19,7 +19,8 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   int myCurrentIndex = 0;
-  List pages = const [home(), store(), Deals(), Cart(), Order()];
+  List pages = const [Home(), store(), Cart(), Order()];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -29,18 +30,18 @@ class _HomepageState extends State<Homepage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Now",
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 14,
                         fontWeight: FontWeight.normal),
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.65,
                     child: TextButton(
                         onPressed: () {},
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
@@ -51,7 +52,7 @@ class _HomepageState extends State<Homepage> {
                                   fontWeight: FontWeight.w600),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 25.0),
+                              padding: EdgeInsets.only(left: 25.0),
                               child: Icon(Icons.keyboard_arrow_down_rounded),
                             )
                           ],
@@ -60,15 +61,15 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
               IconButton(
-                  style: ButtonStyle(
-                      iconColor: MaterialStatePropertyAll(Colors.blue)),
+                  style: const ButtonStyle(
+                      iconColor: WidgetStatePropertyAll(Colors.blue)),
                   onPressed: () {},
-                  icon: Icon(Icons.person_sharp))
+                  icon: const Icon(Icons.person_sharp))
             ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             selectedItemColor: Colors.blue,
             unselectedItemColor: Colors.grey,
             currentIndex: myCurrentIndex,
@@ -86,29 +87,25 @@ class _HomepageState extends State<Homepage> {
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.store_outlined), label: "Stores"),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.people_alt_sharp,
-                  ),
-                  label: "Deals"),
+              
               BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart_rounded), label: "Cart"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.apps_outage_rounded), label: "Orders")
             ]),
         drawer: Drawer(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    child: Column(
+                    child: const Column(
                       children: [
                         Center(
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: CircleAvatar(
                                 backgroundColor: Colors.blueAccent,
                                 backgroundImage: AssetImage("images/CA.jpg")),
@@ -136,11 +133,11 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.person, color: Colors.black87),
-                      SizedBox(width: 30),
+                      const Icon(Icons.person, color: Colors.black87),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {},
-                          child: Text("Profile",
+                          child: const Text("Profile",
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 16,
@@ -152,13 +149,13 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.wallet_rounded, color: Colors.black87),
-                      SizedBox(width: 30),
+                      const Icon(Icons.wallet_rounded, color: Colors.black87),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {
-                            Get.to(Details());
+                            Get.to(const Details());
                           },
-                          child: Text("Wallet",
+                          child: const Text("Wallet",
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 16,
@@ -170,11 +167,11 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.people_rounded, color: Colors.black87),
-                      SizedBox(width: 30),
+                      const Icon(Icons.people_rounded, color: Colors.black87),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {},
-                          child: Text("Group Buying",
+                          child: const Text("Group Buying",
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 16,
@@ -186,11 +183,11 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.contact_phone, color: Colors.black87),
-                      SizedBox(width: 30),
+                      const Icon(Icons.contact_phone, color: Colors.black87),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {},
-                          child: Text("Address Book",
+                          child: const Text("Address Book",
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 16,
@@ -202,11 +199,11 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.settings, color: Colors.black87),
-                      SizedBox(width: 30),
+                      const Icon(Icons.settings, color: Colors.black87),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {},
-                          child: Text(
+                          child: const Text(
                             "Settings",
                             style: TextStyle(
                                 color: Colors.black87,
@@ -220,12 +217,12 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.insert_invitation_sharp,
+                      const Icon(Icons.insert_invitation_sharp,
                           color: Colors.black87),
-                      SizedBox(width: 30),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {},
-                          child: Text("Invite friends",
+                          child: const Text("Invite friends",
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 16,
@@ -237,13 +234,14 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.account_box_outlined, color: Colors.black87),
-                      SizedBox(width: 30),
+                      const Icon(Icons.account_box_outlined,
+                          color: Colors.black87),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {
-                            Get.to(AboutPage());
+                            Get.to(const AboutPage());
                           },
-                          child: Text("Contact Us/Help",
+                          child: const Text("Contact Us/Help",
                               style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 16,
@@ -255,14 +253,14 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
-                      Icon(Icons.logout, color: Colors.red),
-                      SizedBox(width: 30),
+                      const Icon(Icons.logout, color: Colors.red),
+                      const SizedBox(width: 30),
                       TextButton(
                           onPressed: () {
                             Get.replace(Loginpage());
                             Get.to(Loginpage());
                           },
-                          child: Text("Log out",
+                          child: const Text("Log out",
                               style: TextStyle(
                                   color: Colors.red,
                                   fontSize: 16,

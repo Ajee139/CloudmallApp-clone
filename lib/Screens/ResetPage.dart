@@ -7,7 +7,7 @@ class ResetPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Reset your password",
           style: TextStyle(
               color: Colors.black87, fontSize: 20, fontWeight: FontWeight.bold),
@@ -23,9 +23,9 @@ class ResetPage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 30),
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: Text(
+                      child: const Text(
                         "A verification code was sent to ${"adesojiajijolaoluwa11@gmail.com"}",
                         style: TextStyle(
                             color: Colors.black87,
@@ -36,16 +36,16 @@ class ResetPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 15.0),
+                            padding: EdgeInsets.only(bottom: 15.0),
                             child: Text(
                               "Enter the Code",
                               style: TextStyle(
@@ -56,7 +56,7 @@ class ResetPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      TextField(
+                      const TextField(
                         decoration: InputDecoration(
                             focusColor: Colors.black87,
                             hoverColor: Colors.black,
@@ -78,7 +78,7 @@ class ResetPage extends StatelessWidget {
                           children: [
                             TextButton(
                                 onPressed: () {},
-                                child: Row(
+                                child: const Row(
                                   children: [
                                     Text(
                                       "Didn't get the code? ",

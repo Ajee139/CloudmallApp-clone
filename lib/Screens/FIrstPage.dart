@@ -9,7 +9,7 @@ class firstpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("SignUp or Login",
+            title: const Text("SignUp or Login",
                 style: TextStyle(
                     color: Colors.black87,
                     fontSize: 20,
@@ -17,14 +17,14 @@ class firstpage extends StatelessWidget {
         body: Container(
           child: Column(children: [
             Center(
-              child: Container(
+              child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.45,
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Image.asset("images/CA.jpg")),
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.75,
-              child: Center(
+              child: const Center(
                 child: Text(
                     "SignUp or login to continue\nshopping for your favorite items",
                     style: TextStyle(
@@ -35,7 +35,7 @@ class firstpage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 15),
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 50,
                 child: ElevatedButton(
@@ -46,16 +46,16 @@ class firstpage extends StatelessWidget {
                         },
                       ));
                     },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 3, 8, 83)),
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Color.fromARGB(255, 3, 8, 83)),
                     ),
-                    child: Text("Sign Up")),
+                    child: const Text("Sign Up")),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 15, bottom: 15),
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 50,
                 child: ElevatedButton(
@@ -66,10 +66,10 @@ class firstpage extends StatelessWidget {
                         },
                       ));
                     },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.white),
+                    style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.white),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Login",
                       style: TextStyle(color: Colors.blueAccent),
                     )),
