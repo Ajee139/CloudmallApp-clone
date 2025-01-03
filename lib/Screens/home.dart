@@ -1,6 +1,9 @@
+import 'package:cloudmallapp/Models/ProductModel.dart';
+import 'package:cloudmallapp/controllers/cart_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import "package:cloudmallapp/Models/productData.dart";
+import 'package:cloudmallapp/Models/productData.dart';
+import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -28,8 +31,7 @@ class Home extends StatelessWidget {
                 _buildCarouselItem("images/Cn1.jpeg"),
               ],
               options: CarouselOptions(
-                height: MediaQuery.of(context).size.height *
-                    0.25, // Responsive height
+                height: MediaQuery.of(context).size.height * 0.25,
                 viewportFraction: 1.0,
                 enlargeCenterPage: true,
                 autoPlay: true,
@@ -44,9 +46,14 @@ class Home extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: SearchBar(
-                    leading: Icon(Icons.search_rounded),
-                    hintText: "Search for products",
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search_rounded),
+                      hintText: "Search for products",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -61,45 +68,51 @@ class Home extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: GridView.builder(
-                itemCount: products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Number of columns in a row
-                  crossAxisSpacing: 8.0, // Space between columns
-                  mainAxisSpacing: 8.0, // Space between rows
-                  // childAspectRatio: 3 / 4, // Aspect ratio of each card
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  final product = products[index];
-                  return Card(
+              child: LayoutBuilder(builder: (context, constraints) {
+                // Calculate the number of columns based on screen width
+                double screenWidth = constraints.maxWidth;
+                int columns = (screenWidth / 150).floor();
+                final cartController = Get.find<CartController>();
+                return GridView.builder(
+                  itemCount: products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: columns,
+                    crossAxisSpacing: 8.0,
+                    mainAxisSpacing: 8.0,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    final product = products[index];
+                    return Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Container(
-                          height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(10)),
-                            image: DecorationImage(
-                              image: AssetImage(product.imagePath),
-                              fit: BoxFit.fill,
-                            ),
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(10)),
+                          image: DecorationImage(
+                            image: AssetImage(product.imagePath),
+                            fit: BoxFit.fill,
                           ),
-                          child: Stack(children: [
+                        ),
+                        child: Stack(
+                          children: [
                             Positioned(
                               top: 30,
                               left: 0,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
+                                  product.name,
                                   overflow: TextOverflow.clip,
                                   textAlign: TextAlign.center,
-                                  product.name,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 15),
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
                                 ),
                               ),
                             ),
@@ -111,86 +124,45 @@ class Home extends StatelessWidget {
                                 child: Text(
                                   "#${product.price.toStringAsFixed(2)}",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 15),
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
                                 ),
                               ),
                             ),
                             Positioned(
-                                bottom: 10,
-                                left: 30,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor: WidgetStatePropertyAll(
-                                          Colors.transparent),
-                                      foregroundColor:
-                                          WidgetStatePropertyAll(Colors.black)),
-                                  child: Text(
-                                    "Add to cart",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
+                              bottom: 10,
+                              left: 30,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.transparent),
+                                  foregroundColor:
+                                      MaterialStateProperty.all(Colors.black),
+                                ),
+                                child: Text(
+                                  "Add to cart",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
                                   ),
-                                  onPressed: () {},
-                                ))
-                          ]))
-
-// Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Container(
-
-//                           height: MediaQuery.of(context).size.height *
-//                               0.2, // Dynamic height
-//                           decoration: BoxDecoration(
-//                             borderRadius:
-//                                 BorderRadius.vertical(top: Radius.circular(10)),
-//                             image: DecorationImage(
-//                               image: AssetImage(product.imagePath),
-//                               fit: BoxFit.cover,
-//                             ),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: const EdgeInsets.all(8.0),
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 product.name,
-//                                 style: TextStyle(fontWeight: FontWeight.bold),
-//                               ),
-//                               SizedBox(height: 4),
-//                               Text("#${product.price.toStringAsFixed(2)}"),
-//                               SizedBox(height: 8),
-//                               ElevatedButton(
-//                                 style: ButtonStyle(
-//                                   backgroundColor:
-//                                       MaterialStateProperty.all(Colors.blue),
-//                                 ),
-//                                 onPressed: () {
-//                                   // Action for adding to cart
-//                                 },
-//                                 child: Text(
-//                                   'Add to cart',
-//                                   style: TextStyle(
-//                                     color: Colors.white,
-//                                     fontWeight: FontWeight.bold,
-//                                     fontSize: 15,
-//                                   ),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-
-                      );
-                },
-              ),
+                                ),
+                                onPressed: () {
+                                  cartController.addToCart(product);
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
             ),
-          ),
+          )
         ],
       ),
     );

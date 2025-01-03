@@ -19,7 +19,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   int myCurrentIndex = 0;
-  List pages = const [Home(), store(), Cart(), Order()];
+  List pages = [const Home(), const store(), CartPage(), const Order()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +87,6 @@ class _HomepageState extends State<Homepage> {
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.store_outlined), label: "Stores"),
-              
               BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart_rounded), label: "Cart"),
               BottomNavigationBarItem(

@@ -1,20 +1,22 @@
 import 'package:cloudmallapp/Screens/FIrstPage.dart';
+import 'package:cloudmallapp/controllers/cart_Controller.dart';
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
+
+  Get.put(CartController()); // Initialize the CartController globally
   runApp(const MyApp());
 }
-class MyApp extends StatelessWidget {
 
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
