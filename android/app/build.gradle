@@ -23,7 +23,8 @@ if (flutterVersionName == null) {
 }
 
 android {
-    compileSdkVersion 30
+    namespace "com.example.cloudmallapp"
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
 }
 flutter {

@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
                 viewportFraction: 1.0,
                 enlargeCenterPage: true,
                 autoPlay: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
               ),
             ),
           ),
@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search_rounded),
+                      prefixIcon: const Icon(Icons.search_rounded),
                       hintText: "Search for products",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -56,13 +56,13 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
-                Icon(Icons.view_column_rounded, size: 28),
+                const SizedBox(width: 10),
+                const Icon(Icons.view_column_rounded, size: 28),
               ],
             ),
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           // Product Grid Section
           Expanded(
@@ -91,7 +91,7 @@ class Home extends StatelessWidget {
                         width: 100,
                         decoration: BoxDecoration(
                           borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(10)),
+                              const BorderRadius.vertical(top: Radius.circular(10)),
                           image: DecorationImage(
                             image: AssetImage(product.imagePath),
                             fit: BoxFit.fill,
@@ -108,7 +108,7 @@ class Home extends StatelessWidget {
                                   product.name,
                                   overflow: TextOverflow.clip,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                     fontSize: 15,
@@ -123,7 +123,7 @@ class Home extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "#${product.price.toStringAsFixed(2)}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                     fontSize: 15,
@@ -136,12 +136,12 @@ class Home extends StatelessWidget {
                               left: 30,
                               child: ElevatedButton(
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
+                                  backgroundColor: WidgetStateProperty.all(
                                       Colors.transparent),
                                   foregroundColor:
-                                      MaterialStateProperty.all(Colors.black),
+                                      WidgetStateProperty.all(Colors.black),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   "Add to cart",
                                   style: TextStyle(
                                     color: Colors.white,

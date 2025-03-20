@@ -12,7 +12,7 @@ class store extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: GridView.builder(
             itemCount: products.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, // Number of columns in a row
               crossAxisSpacing: 8.0, // Space between columns
               mainAxisSpacing: 8.0, // Space between rows
@@ -29,7 +29,7 @@ class store extends StatelessWidget {
                       width: 100,
                       decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(10)),
+                            const BorderRadius.vertical(top: Radius.circular(10)),
                         image: DecorationImage(
                           image: AssetImage(product.imagePath),
                           fit: BoxFit.fill,
@@ -45,7 +45,7 @@ class store extends StatelessWidget {
                               overflow: TextOverflow.clip,
                               textAlign: TextAlign.center,
                               product.name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                   fontSize: 15),

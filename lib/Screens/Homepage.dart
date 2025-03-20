@@ -1,6 +1,5 @@
 import "package:cloudmallapp/Screens/About.dart";
 import "package:cloudmallapp/Screens/Login.dart";
-import "package:cloudmallapp/Screens/dealspage.dart";
 import "package:cloudmallapp/Screens/details.dart";
 import "package:cloudmallapp/Screens/home.dart";
 import "package:cloudmallapp/Screens/orders.dart";

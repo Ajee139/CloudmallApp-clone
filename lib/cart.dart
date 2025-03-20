@@ -5,11 +5,13 @@ import 'package:cloudmallapp/controllers/cart_Controller.dart';
 class CartPage extends StatelessWidget {
   final CartController cartController = Get.put(CartController());
 
+  CartPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping Cart'),
+        title: const Text('Shopping Cart'),
       ),
       body: Column(
         children: [
@@ -27,13 +29,13 @@ class CartPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: Icon(Icons.remove),
+                            icon: const Icon(Icons.remove),
                             onPressed: () =>
                                 cartController.decreaseQuantity(index),
                           ),
                           Text('${item.quantity}'),
                           IconButton(
-                            icon: Icon(Icons.add),
+                            icon: const Icon(Icons.add),
                             onPressed: () =>
                                 cartController.increaseQuantity(index),
                           ),
@@ -46,17 +48,17 @@ class CartPage extends StatelessWidget {
 
           // Total Price Display
           Obx(() => Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Total:',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       '\$${cartController.totalPrice.toStringAsFixed(2)}',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
